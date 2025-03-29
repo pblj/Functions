@@ -2,13 +2,28 @@
 using namespace std;
 
 void printArray(int arr[], int n);
+void printArray(double arr[], int n);
+
 void SortArray(const int SIZE, int  brr[]);
+void SortArray(const int SIZE, double  brr[]);
+
 void FillRand(const int n, int  arr[]);
+void FillRand(const int n, double  arr[]);
+
 int Sum(int arr[], const int n);
+double Sum(double arr[], const int n);
+
 double Avg(int arr[], const int n);
+double Avg(double arr[], const int n);
+
 int MinValueIn(int arr[], const int n);
+double MinValueIn(double arr[], const int n);
+
 int MaxValueIn(int arr[], const int n);
+double MaxValueIn(double arr[], const int n);
+
 void ShiftLeft(int arr[], const int n,const int shifts);
+void ShiftLeft(double arr[], const int n,const int shifts);
 
 
 void main() {
@@ -26,12 +41,12 @@ void main() {
 	cout << "Минимальное значение в массиве: " << MinValueIn(arr, n) << endl;
 	cout << "Максимальное значение в массиве: " << MaxValueIn(arr, n) << endl;
 	int shifts;
-	cout << "Введите максимальное кол-во сдвигов: "; cin >> shifts;
-	ShiftLeft(arr, n, shifts);
-	printArray(arr, n);
+	//cout << "Введите максимальное кол-во сдвигов: "; cin >> shifts;
+	//ShiftLeft(arr, n, shifts);
+	//printArray(arr, n);
 
 	const int SIZE = 8;
-	int brr[SIZE];
+	double brr[SIZE];
 
 	FillRand(SIZE, brr);
 	printArray(brr, SIZE);
@@ -61,8 +76,28 @@ void SortArray(const int SIZE, int  brr[])
 		}
 	}
 }
+void SortArray(const int SIZE, double  brr[])
+{
+	for (int i = 0; i < SIZE; i++)
+	{
+		for (int j = i + 1; j < SIZE; j++) {
+			if (brr[j] < brr[i])
+			{
+				int buffer = brr[i];
+				brr[i] = brr[j];
+				brr[j] = buffer;
+			}
+		}
+	}
+}
 
 void FillRand(const int n, int  arr[])
+{
+	for (int i = 0; i < n; i++) {
+
+		arr[i] = rand() % 100;
+	}
+}void FillRand(const int n, double  arr[])
 {
 	for (int i = 0; i < n; i++) {
 
@@ -71,6 +106,14 @@ void FillRand(const int n, int  arr[])
 }
 
 void printArray(int arr[],const int n) {
+
+	for (int i = 0; i < n; i++)
+	{
+		cout << arr[i] << "\t";
+	}
+	cout << endl;
+
+}void printArray(double arr[],const int n) {
 
 	for (int i = 0; i < n; i++)
 	{
@@ -88,14 +131,36 @@ int Sum(int arr[], const int n)
 		sum += arr[i];
 	}
 	return sum;
+
+}double Sum(double arr[], const int n)
+{
+	int sum = 0;
+	for (int i = 0; i < n; i++)
+	{
+		sum += arr[i];
+	}
+	return sum;
 }
 
 double Avg(int arr[], const int n)
 {
 	return (double)Sum(arr, n) / n;
+
+}double Avg(double arr[], const int n)
+{
+	return (double)Sum(arr, n) / n;
 }
 
 int MinValueIn(int arr[], const int n)
+{
+	int min = arr[0];
+	for (int i = 1; i < n; i++)
+	{
+		if (arr[i] < min) min = arr[i];
+	}
+	return min;
+
+}double MinValueIn(double arr[], const int n)
 {
 	int min = arr[0];
 	for (int i = 1; i < n; i++)
@@ -113,9 +178,30 @@ int MaxValueIn(int arr[], const int n)
 		if (arr[i] > max) max = arr[i];
 	}
 	return max;
+
+}double MaxValueIn(double arr[], const int n)
+{
+	int max = arr[0];
+	for (int i = 1; i < n; i++)
+	{
+		if (arr[i] > max) max = arr[i];
+	}
+	return max;
 }
 
 void ShiftLeft(int arr[], const int n, const int shifts)
+{
+	for (int i = 0; i < shifts; i++)
+	{
+		int buffer = arr[0];
+		for (int i = 1; i < n; i++)
+		{
+			arr[i - 1] = arr[i];
+		}
+		arr[n - 1] = buffer;
+	}
+
+}void ShiftLeft(double arr[], const int n, const int shifts)
 {
 	for (int i = 0; i < shifts; i++)
 	{
