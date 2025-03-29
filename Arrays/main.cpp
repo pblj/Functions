@@ -83,7 +83,7 @@ void SortArray(const int SIZE, double  brr[])
 		for (int j = i + 1; j < SIZE; j++) {
 			if (brr[j] < brr[i])
 			{
-				int buffer = brr[i];
+				double buffer = brr[i];
 				brr[i] = brr[j];
 				brr[j] = buffer;
 			}
@@ -101,7 +101,8 @@ void FillRand(const int n, int  arr[])
 {
 	for (int i = 0; i < n; i++) {
 
-		arr[i] = rand() % 100;
+		arr[i] = rand() % 10000;
+		arr[i] /= 100;
 	}
 }
 
@@ -134,7 +135,7 @@ int Sum(int arr[], const int n)
 
 }double Sum(double arr[], const int n)
 {
-	int sum = 0;
+	double sum = 0;
 	for (int i = 0; i < n; i++)
 	{
 		sum += arr[i];
@@ -162,7 +163,7 @@ int MinValueIn(int arr[], const int n)
 
 }double MinValueIn(double arr[], const int n)
 {
-	int min = arr[0];
+	double min = arr[0];
 	for (int i = 1; i < n; i++)
 	{
 		if (arr[i] < min) min = arr[i];
@@ -181,7 +182,7 @@ int MaxValueIn(int arr[], const int n)
 
 }double MaxValueIn(double arr[], const int n)
 {
-	int max = arr[0];
+	double max = arr[0];
 	for (int i = 1; i < n; i++)
 	{
 		if (arr[i] > max) max = arr[i];
@@ -205,7 +206,7 @@ void ShiftLeft(int arr[], const int n, const int shifts)
 {
 	for (int i = 0; i < shifts; i++)
 	{
-		int buffer = arr[0];
+		double buffer = arr[0];
 		for (int i = 1; i < n; i++)
 		{
 			arr[i - 1] = arr[i];
