@@ -1,14 +1,21 @@
 ﻿#include <iostream>
 using namespace std;
 
-void printArray(int arr[], int n);
-void printArray(double arr[], int n);
+#define delimiter "\n-------------------------------------------------------------------\n"
+
+const int ROWS = 4;
+const int COLS = 5;
+
+void printArray(int arr[], const int n);
+void printArray(double arr[], const int n);
+void printArray(int arr[ROWS][COLS], const int ROWS, const int COLS);
 
 void SortArray(const int SIZE, int  brr[]);
 void SortArray(const int SIZE, double  brr[]);
 
 void FillRand(const int n, int  arr[]);
 void FillRand(const int n, double  arr[]);
+void FillRand(const int ROWS1, const int COLS1,int arr[ROWS][COLS]);
 
 int Sum(int arr[], const int n);
 double Sum(double arr[], const int n);
@@ -59,10 +66,10 @@ void main() {
 	//cout << "Введите максимальное кол-во сдвигов: "; cin >> shifts;
 	//ShiftLeft(brr, SIZE, shifts);
 	//printArray(brr, SIZE);
+	cout << delimiter << endl;
 
 	//обьявление думерного массива:
-	const int ROWS = 4;
-	const int COLS = 5;
+	
 	int i_arr_2[ROWS][COLS] = 
 	{
 		{3,5,8},
@@ -70,14 +77,9 @@ void main() {
 		{55,89,144},
 	};
 
-	for (int i = 0; i < ROWS; i++)
-	{
-		for (int j = 0; j < COLS; j++)
-		{
-			cout << i_arr_2[i][j] << "\t";
-		}
-		cout << endl;
-	}
+	FillRand(ROWS, COLS, i_arr_2);
+	printArray(i_arr_2, ROWS, COLS);
+
 
 }
 
@@ -125,6 +127,15 @@ void FillRand(const int n, double  arr[])
 		arr[i] /= 100;
 	}
 }
+void FillRand(const int ROWS1, const int COLS2, int arr[ROWS][COLS])
+{
+	for (int i = 0; i < ROWS; i++) {
+		for (int j = 0; j < COLS; j++)
+		{
+			arr[i][j] = rand();
+		}
+	}
+}
 
 void printArray(int arr[],const int n) {
 
@@ -143,6 +154,18 @@ void printArray(double arr[],const int n) {
 	}
 	cout << endl;
 
+}
+void printArray(int arr[ROWS][COLS], const int ROWS, const int COLS)
+{
+	for (int i = 0; i < ROWS; i++)
+	{
+		for (int j = 0; j < COLS; j++)
+		{
+			cout << arr[i][j] << "\t";
+		}
+		cout << endl;
+	}
+	cout << endl;
 }
 
 int Sum(int arr[], const int n) 
