@@ -15,19 +15,24 @@ void SortArray(const int SIZE, double  brr[]);
 
 void FillRand(const int n, int  arr[]);
 void FillRand(const int n, double  arr[]);
-void FillRand(const int ROWS1, const int COLS1,int arr[ROWS][COLS]);
+void FillRand(const int ROWS1, const int COLS1,int arr[ROWS][COLS],int minRand = 0,int maxRand = 100);
+void FillRand(const int ROWS1, const int COLS1, double arr[ROWS][COLS]);
 
 int Sum(int arr[], const int n);
 double Sum(double arr[], const int n);
+int Sum(int arr[ROWS][COLS], const int ROWS, const int COLS);
 
 double Avg(int arr[], const int n);
 double Avg(double arr[], const int n);
+double Avg(int  arr[ROWS][COLS], const int ROWS, const int COLS);
 
 int MinValueIn(int arr[], const int n);
 double MinValueIn(double arr[], const int n);
+int MinValueIn(int  arr[ROWS][COLS], const int ROWS, const int COLS);
 
 int MaxValueIn(int arr[], const int n);
 double MaxValueIn(double arr[], const int n);
+int MaxValueIn(int  arr[ROWS][COLS], const int ROWS, const int COLS);
 
 void ShiftLeft(int arr[], const int n,const int shifts);
 void ShiftLeft(double arr[], const int n,const int shifts);
@@ -79,7 +84,10 @@ void main() {
 
 	FillRand(ROWS, COLS, i_arr_2);
 	printArray(i_arr_2, ROWS, COLS);
-
+	cout << "Сумма элементов массива: " << Sum(i_arr_2, ROWS, COLS) << endl;
+	cout << "Среднее арифметическое массива: " << Avg(i_arr_2, ROWS, COLS) << endl;
+	cout << "Минимальное значение массива: " << MinValueIn(i_arr_2, ROWS, COLS) << endl;
+	cout << "Максимальное значение массива: " << MaxValueIn(i_arr_2, ROWS, COLS) << endl;
 
 }
 
@@ -127,12 +135,21 @@ void FillRand(const int n, double  arr[])
 		arr[i] /= 100;
 	}
 }
-void FillRand(const int ROWS1, const int COLS2, int arr[ROWS][COLS])
+void FillRand(const int ROWS1, const int COLS2, int arr[ROWS][COLS],int minRand, int maxRand)
 {
 	for (int i = 0; i < ROWS; i++) {
 		for (int j = 0; j < COLS; j++)
 		{
-			arr[i][j] = rand();
+			arr[i][j] = rand()%(maxRand - minRand)+minRand;
+		}
+	}
+}
+void FillRand(const int ROWS1, const int COLS2, double arr[ROWS][COLS], int minRand, int maxRand)
+{
+	for (int i = 0; i < ROWS1; i++) {
+		for (int j = 0; j < COLS2; j++)
+		{
+			arr[i][j] = rand() % (maxRand - minRand) + minRand;
 		}
 	}
 }
@@ -187,6 +204,18 @@ double Sum(double arr[], const int n)
 	}
 	return sum;
 }
+int Sum(int arr[ROWS][COLS], const int ROWS, const int COLS)
+{
+	int sum = 0;
+	for (int i = 0; i < ROWS; i++)
+	{
+		for (int j = 0; j < COLS; j++)
+		{
+			sum += arr[i][j];
+		}
+	}
+	return sum;
+}
 
 double Avg(int arr[], const int n)
 {
@@ -196,6 +225,10 @@ double Avg(int arr[], const int n)
 double Avg(double arr[], const int n)
 {
 	return (double)Sum(arr, n) / n;
+}
+double Avg(int arr[ROWS][COLS], const int ROWS, const int COLS)
+{
+	return (double)Sum(arr, ROWS, COLS) / ROWS / COLS;
 }
 
 int MinValueIn(int arr[], const int n)
@@ -217,6 +250,18 @@ double MinValueIn(double arr[], const int n)
 	}
 	return min;
 }
+int MinValueIn(int  arr[ROWS][COLS], const int ROWS, const int COLS)
+{
+	int min = arr[0][0];
+	for (int i = 0; i < ROWS; i++)
+	{
+		for (int j = 0; j < COLS; j++) 
+		{
+			if (arr[i][j] < min) min = arr[i][j];
+		}
+	}
+	return min;
+}
 
 int MaxValueIn(int arr[], const int n)
 {
@@ -234,6 +279,18 @@ double MaxValueIn(double arr[], const int n)
 	for (int i = 1; i < n; i++)
 	{
 		if (arr[i] > max) max = arr[i];
+	}
+	return max;
+}
+int MaxValueIn(int  arr[ROWS][COLS], const int ROWS, const int COLS)
+{
+	int max = arr[0][0];
+	for (int i = 0; i < ROWS; i++)
+	{
+		for (int j = 0; j < COLS; j++)
+		{
+			if (arr[i][j] > max) max = arr[i][j];
+		}
 	}
 	return max;
 }
