@@ -1,23 +1,11 @@
-﻿#include <iostream>
-using namespace std;
-
-#define delimiter "\n-------------------------------------------------------------------\n"
-
-const int ROWS = 4;
-const int COLS = 5;
-
-void printArray(int arr[], const int n);
-void printArray(double arr[], const int n);
-void printArray(int arr[ROWS][COLS], const int ROWS, const int COLS);
+﻿#include "stdafx.h" //"" - сначало в каталоге с проектом <> - в системных
+#include "constants.h" 
+#include "FillRand.h" 
+#include "Print.h" 
 
 void SortArray(const int SIZE, int  brr[]);
 void SortArray(const int SIZE, double  brr[]);
 void SortArray(const int ROWS1, const int COLS1, int arr[ROWS][COLS]);
-
-void FillRand(const int n, int  arr[]);
-void FillRand(const int n, double  arr[]);
-void FillRand(const int ROWS1, const int COLS1,int arr[ROWS][COLS],int minRand = 0,int maxRand = 100);
-//void FillRand(const int ROWS1, const int COLS1, double arr[ROWS][COLS]);
 
 int Sum(int arr[], const int n);
 double Sum(double arr[], const int n);
@@ -160,71 +148,6 @@ void SortArray(const int ROWS1, const int COLS1, int arr[ROWS][COLS])
 	}
 	cout << "Итераций: " << iterations << endl;
 	cout << "Обменов: " << exchenges << endl;
-}
-
-void FillRand(const int n, int  arr[])
-{
-	for (int i = 0; i < n; i++) {
-
-		arr[i] = rand() % 100;
-	}
-}
-void FillRand(const int n, double  arr[])
-{
-	for (int i = 0; i < n; i++) {
-
-		arr[i] = rand() % 10000;
-		arr[i] /= 100;
-	}
-}
-void FillRand(const int ROWS1, const int COLS2, int arr[ROWS][COLS],int minRand, int maxRand)
-{
-	for (int i = 0; i < ROWS; i++) {
-		for (int j = 0; j < COLS; j++)
-		{
-			arr[i][j] = rand()%(maxRand - minRand)+minRand;
-		}
-	}
-}
-void FillRand(const int ROWS1, const int COLS2, double arr[ROWS][COLS], int minRand, int maxRand)
-{
-	for (int i = 0; i < ROWS1; i++) {
-		for (int j = 0; j < COLS2; j++)
-		{
-			arr[i][j] = rand() % (maxRand - minRand) + minRand;
-		}
-	}
-}
-
-void printArray(int arr[],const int n) {
-
-	for (int i = 0; i < n; i++)
-	{
-		cout << arr[i] << "\t";
-	}
-	cout << endl;
-
-}
-void printArray(double arr[],const int n) {
-
-	for (int i = 0; i < n; i++)
-	{
-		cout << arr[i] << "\t";
-	}
-	cout << endl;
-
-}
-void printArray(int arr[ROWS][COLS], const int ROWS, const int COLS)
-{
-	for (int i = 0; i < ROWS; i++)
-	{
-		for (int j = 0; j < COLS; j++)
-		{
-			cout << arr[i][j] << "\t";
-		}
-		cout << endl;
-	}
-	cout << endl;
 }
 
 int Sum(int arr[], const int n) 
