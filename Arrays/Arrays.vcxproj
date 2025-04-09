@@ -130,10 +130,15 @@
     <ClCompile Include="FillRand.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Print.cpp" />
+    <ClCompile Include="Shifts.cpp" />
+    <ClCompile Include="Sort.cpp" />
+    <ClCompile Include="Statistics.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="constants.h" />
     <ClInclude Include="FillRand.h" />
+    <ClInclude Include="Shifts.h" />
+    <ClInclude Include="Sort.h" />
     <ClInclude Include="Statistics.h" />
     <ClInclude Include="Print.h" />
     <ClInclude Include="stdafx.h" />
