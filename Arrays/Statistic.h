@@ -28,7 +28,7 @@ int MaxValueIn(T  arr[ROWS][COLS], const int ROWS, const int COLS);*/
 template <typename T>
 T Sum(T arr[], const int n)
 {
-	int sum = 0;
+	T sum = 0;
 	for (int i = 0; i < n; i++)
 	{
 		sum += arr[i];
