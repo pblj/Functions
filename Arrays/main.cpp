@@ -1,10 +1,7 @@
 ﻿#include "stdafx.h"
-#include "evntcons.h"
+#include "constants.h"
+#include "print.h"
 
-template <typename T>
-void printArray(T arr[], const int n);
-template <typename T>
-void printArray(T arr[ROWS][COLS], const int ROWS, const int COLS);
 
 template <typename T>
 void SortArray(const int SIZE, T  brr[]);
@@ -178,29 +175,9 @@ void FillRand(const int ROWS1, const int COLS2, double arr[ROWS][COLS], int minR
 		}
 	}
 }
-template <typename T>
-void printArray(T arr[],const int n) {
 
-	for (int i = 0; i < n; i++)
-	{
-		cout << arr[i] << "\t";
-	}
-	cout << endl;
 
-}
-template <typename T>
-void printArray(T arr[ROWS][COLS], const int ROWS, const int COLS)
-{
-	for (int i = 0; i < ROWS; i++)
-	{
-		for (int j = 0; j < COLS; j++)
-		{
-			cout << arr[i][j] << "\t";
-		}
-		cout << endl;
-	}
-	cout << endl;
-}
+
 template <typename T>
 T Sum(T arr[], const int n) 
 {
