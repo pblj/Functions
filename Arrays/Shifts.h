@@ -12,7 +12,7 @@ template <typename T>
 void ShiftRight(T arr[], const int n,const int shifts);
 */
 template <typename T>
-void ShiftLeft(int arr[ROWS][COLS], const int ROWS, const int COLS, int shifts)
+void ShiftLeft(T arr[ROWS][COLS], const int ROWS, const int COLS, int shifts)
 {
 	
 	ShiftLeft(arr[0], ROWS * COLS, shifts);

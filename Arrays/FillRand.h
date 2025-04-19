@@ -19,7 +19,7 @@ void FillRand(const int n, T  arr[])
 	}
 }
 template <typename T>
-void FillRand(const int ROWS1, const int COLS2, T arr[ROWS][COLS], int minRand, int maxRand)
+void FillRand(const int ROWS1, const int COLS2, T arr[ROWS][COLS], int minRand=1, int maxRand=100)
 {
 	for (int i = 0; i < ROWS; i++) {
 		for (int j = 0; j < COLS; j++)
