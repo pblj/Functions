@@ -1,10 +1,5 @@
-﻿#include <iostream>
-using namespace std;
-
-#define delimiter "\n-------------------------------------------------------------------\n"
-
-const int ROWS = 4;
-const int COLS = 5;
+﻿#include "stdafx.h"
+#include "evntcons.h"
 
 template <typename T>
 void printArray(T arr[], const int n);
